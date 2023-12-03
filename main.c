@@ -22,3 +22,7 @@ typedef struct
     ponteiroRegistro inicio;
 } lista; //a estrutura de lista tem apenas o ponteiro de início. Assim, esse ponteiro irá apontar sempre para o início da lista
 
+//---------------------------- INICILIZAÇÕES DAS ESTRUTURAS ----------------------------------//
+inicializarLista(lista *l){
+    l->inicio=NULL;
+}
