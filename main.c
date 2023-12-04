@@ -36,7 +36,7 @@ dadosPaciente *pegarDadosPaciente(listaPacientes *l)
     dadosPaciente *dados;
     printf("Digite o nome do paciente: ");
     scanf("%[^\n]", dados->nome);
-    __fpurge(stdin);
+    __fpurge(stdin); // No linux, é essa função. Porém, no Windows é fflush(stdin)
     printf("%s\n", dados->nome);
     printf("Digite o problema do paciente: ");
     scanf("%[^\n]", dados->problema);
