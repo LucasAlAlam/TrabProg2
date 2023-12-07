@@ -12,12 +12,12 @@ int main() {
     {
         printf("Deseja recuperar a fila existente? (1)Sim ou (2)Não: ");
         scanf("%i", &flagRecuperacao);
-        while (flagRecuperacao!=0 && flagRecuperacao!=1)
+        while (flagRecuperacao!=1 && flagRecuperacao!=2)
         {
             printf("Opção inválida! Digite 1 para \"Sim\" ou 2 para \"Não\": ");
             scanf("%i", &flagRecuperacao);
         }
-        if (flagRecuperacao)
+        if (flagRecuperacao==1)
             root = carregarFila("backupFila.bin");
     }
     
