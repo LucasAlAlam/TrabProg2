@@ -251,6 +251,16 @@ Paciente * lerHistorico() {
     return listaPacientes;
 }
 
+void imprimirPacientes(Paciente * fila) {
+    printf("Fila de pacientes:\n");
+    int id = 1;
+    while (fila != NULL)
+    {
+        printf("%d - Nome: %s | Problema: %s\n", id++, fila->nome, fila->problema);
+        fila = fila->prox;
+    }
+    printf("\n");
+}
 
 void imprimeListaDePacientes() {
     Paciente * root = lerHistorico();
@@ -263,12 +273,12 @@ void imprimeListaDePacientes() {
     {
     case 1:
         printf("Imprimindo lista cronologicamente:\n");
-        imprimirFila(root);
+        imprimirPacientes(root);
         break;
     case 2: 
         printf("Imprimindo lista alfabeticamente:\n");
         mergeSort(&root);
-        imprimirFila(root);
+        imprimirPacientes(root);
         break;
     default:
         printf("Opcao indisponivel");
