@@ -19,6 +19,7 @@ int main() {
         }
         if (flagRecuperacao==1)
             root = carregarFila("backupFila.bin");
+        else remove("backupFila.bin");
     }
     
     while(opcao != 6) {
