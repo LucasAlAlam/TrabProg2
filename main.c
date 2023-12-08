@@ -27,14 +27,17 @@ int main() {
         switch (opcao)
         {
         case 1:
-            chamarPaciente(&root, 1, 2);
+            chamarPaciente("historico.txt", "backupFila.bin", &root, 1, 2);
             break;
         case 2:
-            chamarPaciente(&root, 3, 3);
+            chamarPaciente("historico.txt", "backupFila.bin", &root, 3, 3);
             break;
 
         case 3: 
             imprimirFila(root);
+            break;
+        case 4: 
+            imprimeListaDePacientes();
             break;
         case 5: 
             cadastrarPaciente(&root, "backupFila.bin");
