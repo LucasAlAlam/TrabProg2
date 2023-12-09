@@ -153,7 +153,7 @@ void cadastrarPaciente(Paciente **root, char *nomeDoArquivo)
     scanf("%d", &prioridade);
     Paciente *novoPaciente = criarPaciente(nome, problema, prioridade);
     adicionarPacienteOrdenado(root, novoPaciente);
-    salvarFila(nomeDoArquivo, novoPaciente);
+    salvarFila(nomeDoArquivo, *root);
     // imprimirFila(*root);
 }
 
@@ -192,6 +192,7 @@ Paciente *carregarFila(const char *nomeArquivo)
         Paciente *novoPaciente = criarPaciente(paciente.nome, paciente.problema, paciente.gravidade);
         if (novoPaciente != NULL)
         {
+            imprimirFila(novoPaciente);
             novoPaciente->prox = fila;
             fila = novoPaciente;
         }
