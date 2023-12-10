@@ -193,8 +193,7 @@ Paciente *carregarFila(const char *nomeArquivo)
         if (novoPaciente != NULL)
         {
             imprimirFila(novoPaciente);
-            novoPaciente->prox = fila;
-            fila = novoPaciente;
+            adicionarPacienteOrdenado(&fila, novoPaciente);
         }
     }
 
