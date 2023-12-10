@@ -8,6 +8,7 @@ int main() {
     Paciente * root = NULL;
     int flagRecuperacao;
     FILE *arqFila;
+    // Faz a recuperação da fila
     if (verificarBackup())
     {
         printf("Deseja recuperar a fila existente? (1)Sim ou (2)Não: ");
@@ -22,6 +23,7 @@ int main() {
         else remove("backupFila.bin");
     }
     
+    // O código roda enquanto nenhuma opção além de 1,2,3,4,5 for selecionada
     while(opcao != 6) {
         opcao = imprimeMenuERetornaOpcao();
         limparBuffer();

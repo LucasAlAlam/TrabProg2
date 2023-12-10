@@ -7,6 +7,7 @@
 Paciente *merge(Paciente *left, Paciente *right) {
     Paciente *result = NULL;
 
+    // Verifica se um dos lados está vazio, retorna o outro lado diretamente
     if (left == NULL) {
         return right;
     } else if (right == NULL) {
@@ -35,6 +36,7 @@ void split(Paciente *head, Paciente **front, Paciente **back) {
         slow = head;
         fast = head->prox;
 
+        // Usa fast e slow para dividir a lista ao meio
         while (fast != NULL) {
             fast = fast->prox;
             if (fast != NULL) {
@@ -42,10 +44,10 @@ void split(Paciente *head, Paciente **front, Paciente **back) {
                 fast = fast->prox;
             }
         }
-
+        // Define os ponteiros para a lista da frente e de trás
         *front = head;
         *back = slow->prox;
-        slow->prox = NULL;
+        slow->prox = NULL; // Garante que em uma iteração termine na metade da lista. Ex. while (fila != NULL)
     }
 }
 
@@ -58,12 +60,12 @@ void mergeSort(Paciente **head) {
         return;
     }
 
-    split(tempHead, &left, &right);
+    split(tempHead, &left, &right); // Divide a lista em duas metades
 
     mergeSort(&left);
     mergeSort(&right);
 
-    *head = merge(left, right);
+    *head = merge(left, right); // Mescla as duas metades ordenadas
 }
 
 #endif

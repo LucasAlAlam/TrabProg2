@@ -36,23 +36,21 @@ void salvarFila(const char *nomeArquivo, Paciente *fila)
     fclose(arquivo);
 }
 
+// Salva o nome e problema do paciente no final do arquivo de histórico
 void salvaPacienteNaListaDeHistorico(char * nomeDoArquivo, Paciente paciente) {
-     // Abra o arquivo no modo de escrita no final
-    FILE *arquivo = fopen(nomeDoArquivo, "a"); // "a" para abrir o arquivo em modo de escrita no final
+    FILE *arquivo = fopen(nomeDoArquivo, "a"); 
 
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo.\n");
         return;
     }
 
-    // Escreva os detalhes do paciente no arquivo como texto
     fprintf(arquivo, "Nome: %s, problema: %s\n", paciente.nome, paciente.problema);
 
-    // Feche o arquivo
     fclose(arquivo);
 }
 
-// Função para criar um novo paciente
+// Função para criar um novo paciente. Faz a alocação de memória, atribui os valores e retorna um ponteiro para Paciente
 Paciente *criarPaciente(const char *nome, const char *problema, int gravidade)
 {
     Paciente *novoPaciente = (Paciente *)malloc(sizeof(Paciente));
@@ -66,7 +64,7 @@ Paciente *criarPaciente(const char *nome, const char *problema, int gravidade)
     return novoPaciente;
 }
 
-// Função para adicionar um paciente à fila ordenada por gravidade decrescente
+// Função para adicionar um paciente à uma lista ordenada primeiro por prioridade e segundo por ordem de chegada
 void adicionarPacienteOrdenado(Paciente **fila, Paciente *novoPaciente)
 {
     if (*fila == NULL || novoPaciente->gravidade < (*fila)->gravidade)
@@ -86,7 +84,7 @@ void adicionarPacienteOrdenado(Paciente **fila, Paciente *novoPaciente)
     }
 }
 
-// Função para chamar o próximo paciente da fila
+// Função para chamar o próximo paciente da fila. Deve receber um range para que possa ser usada tanto para chamar pacientes na emergência quanto para a consulta
 Paciente *chamarPaciente(char * nomeDoArquivoDeHistorico, char * nomeDoArquivoDaFila,  Paciente **fila, int inicio, int fim)
 {
     if (*fila == NULL)
@@ -124,7 +122,7 @@ Paciente *chamarPaciente(char * nomeDoArquivoDeHistorico, char * nomeDoArquivoDa
     return atual;
 }
 
-// Função para imprimir a fila de pacientes
+// Função para imprimir a fila de pacientes com nome, problema e prioridade
 void imprimirFila(Paciente *fila)
 {
     printf("Fila de pacientes:\n");
@@ -136,6 +134,7 @@ void imprimirFila(Paciente *fila)
     printf("\n");
 }
 
+// Realiza todo o processo de cadastro de um paciente
 void cadastrarPaciente(Paciente **root, char *nomeDoArquivo)
 {
     char nome[50];
@@ -158,7 +157,7 @@ void cadastrarPaciente(Paciente **root, char *nomeDoArquivo)
 }
 
 
-
+// Verifica se existe o arquivo de backup
 int verificarBackup()
 {
     FILE *fp;

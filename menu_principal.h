@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "utils.h"
 
-
+// Imprime o menu e retorna a opção selecionada
 int imprimeMenuERetornaOpcao() {
     printf("O que deseja fazer?\n");
     printf("1 - Chamar proximo paciente para emergencia\n");
