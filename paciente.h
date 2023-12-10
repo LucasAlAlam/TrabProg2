@@ -150,6 +150,12 @@ void cadastrarPaciente(Paciente **root, char *nomeDoArquivo)
     printf("Prioridade: ");
     int prioridade;
     scanf("%d", &prioridade);
+    while (prioridade<0 || prioridade>3)
+    {
+        printf("Valor para prioridade inválido. Digite um inteiro entre 1 e 3: ");
+        scanf("%d", &prioridade);
+    }
+    
     Paciente *novoPaciente = criarPaciente(nome, problema, prioridade);
     adicionarPacienteOrdenado(root, novoPaciente);
     salvarFila(nomeDoArquivo, *root);
